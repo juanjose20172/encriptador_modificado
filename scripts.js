@@ -1,3 +1,5 @@
+// .toLowerCase
+
 var input = document.querySelector("#texto-ingresado");
 input.focus();
 var textoResultado = document.querySelector("#texto-resultado");
@@ -8,28 +10,50 @@ var btnEncriptar = document.querySelector("#btn-encriptar");
 var btnDesencriptar = document.querySelector("#btn-desencriptar");
 var btnCopiar = document.querySelector("#btn-copiar");
 var keys = [
-    ["e","enter"],
-    ["i","imes"],
-    ["a","ai"],
-    ["o","ober"],
-    ["u","ufat"]
+    ["¡","r"],
+    ["¿","t"],
+    ["[","g"],
+    ["?","o"],
+    ["{","p"],
+    ["%","a"],
+    ["}","q"],
+    ["]","s"],
+    ["/","v"],
+    ["&","h"],
+    ["~","ñ"],
+    ["@","b"],
+    ["-","f"],
+    ["╗","i"],
+    ["®","u"],
+    ["_","x"],
+    ["!","e"],
+    ["|","m"],
+    ["$","c"],
+    ["°","j"],
+    ["6","w"],
+    ["3","d"],
+    ["2","n"],
+    ["4","k"],
+    ["5","y"],
+    ["8","z"],
+    ["*","l"]
 ];
 
 //BOTON PARA ENCRIPTAR TEXTO
 btnEncriptar.addEventListener("click", function(){
 
-    //VALIDACIÓN DE MAYÚSCULAS Y/O ACENTOS
-    if(/[A-Z]/.test(input.value) || /[äÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]/.test(input.value)){
-        error.classList.remove("invisible");
-        return
-    }else{
-        error.classList.add("invisible");
-    };
-
+    // //VALIDACIÓN DE MAYÚSCULAS Y/O ACENTOS
+    // if(/[A-Z]/.test(input.value) || /[äÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]/.test(input.value)){
+    //     error.classList.remove("invisible");
+    //     return
+    // }else{
+    //     error.classList.add("invisible");
+    // };
+    input.value = input.value.toLowerCase();
     //ENCRIPTACION
     for(i = 0; i < keys.length; i++){
-        if(input.value.includes(keys[i][0])){
-            input.value = input.value.replaceAll(keys[i][0], keys[i][1])
+        if(input.value.includes(keys[i][1])){
+            input.value = input.value.replaceAll(keys[i][1], keys[i][0])
         };
     };
 
@@ -49,18 +73,18 @@ btnEncriptar.addEventListener("click", function(){
 //BOTON PARA DESENCRIPTAR TEXTO
 btnDesencriptar.addEventListener("click", function(){
 
-    //VALIDACIÓN DE MAYÚSCULAS Y/O ACENTOS
-    if(/[A-Z]/.test(input.value) || /[äÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]/.test(input.value)){
-        error.classList.remove("invisible");
-        return
-    }else{
-        error.classList.add("invisible");
-    };
+    // //VALIDACIÓN DE MAYÚSCULAS Y/O ACENTOS
+    // if(/[A-Z]/.test(input.value) || /[äÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]/.test(input.value)){
+    //     error.classList.remove("invisible");
+    //     return
+    // }else{
+    //     error.classList.add("invisible");
+    // };
 
     //DESENCRIPTACION
     for(i = 0; i < keys.length; i++){
-        if(input.value.includes(keys[i][1])){
-            input.value = input.value.replaceAll(keys[i][1], keys[i][0]);
+        if(input.value.includes(keys[i][0])){
+            input.value = input.value.replaceAll(keys[i][0], keys[i][1]);
         };
     };
 
